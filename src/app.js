@@ -85,13 +85,13 @@ app.get('/products', (req, res) => {
 
 // })
 
-app.get('*', (req, res) => {
-    res.render('404', {
-        title: '404 page not found',
-        name: 'Bassem alameddine'
-    })
+// app.get('*', (req, res) => {
+//     res.render('404', {
+//         title: '404 page not found',
+//         name: 'Bassem alameddine'
+//     })
 
-})
+// })
 
 app.listen(port, () => {
     console.log("server is up on port " + port)
