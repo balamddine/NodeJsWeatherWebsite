@@ -8,9 +8,9 @@ const forecast = require('./utils/forecast');
 const app = express();
 const port = process.env.PORT || 3000
     // Define paths for Express config
-const publicDir = path.join(__dirname, '../public')
-const viewsDir = path.join(__dirname, '../templates/views')
-const partialPath = path.join(__dirname, '../templates/partials')
+const publicDir = path.join(__dirname, '/public')
+const viewsDir = path.join(__dirname, '/templates/views')
+const partialPath = path.join(__dirname, '/templates/partials')
 
 // this is used for dynamic pages with ext hbs(handle bar for express)
 // Setup handlebars engine and views location
