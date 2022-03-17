@@ -68,22 +68,22 @@ app.get('/weather', (req, res) => {
 
 })
 app.get('/products', (req, res) => {
-    if (!req.query.search) {
-        return res.send({
-            error: 'You must provide a search term'
+        if (!req.query.search) {
+            return res.send({
+                error: 'You must provide a search term'
+            })
+        }
+        res.send({
+            products: []
         })
-    }
-    res.send({
-        products: []
     })
-})
-app.get('/about/*', (req, res) => {
-    res.render('404', {
-        title: 'About page not found',
-        name: 'Bassem alameddine'
-    })
+    // app.get('/about/*', (req, res) => {
+    //     res.render('404', {
+    //         title: 'About page not found',
+    //         name: 'Bassem alameddine'
+    //     })
 
-})
+// })
 
 app.get('*', (req, res) => {
     res.render('404', {
