@@ -9,13 +9,13 @@ const app = express();
 const port = process.env.PORT || 3000
     // Define paths for Express config
 const publicDir = path.join(__dirname, '../public')
-const viewsDir = path.join(__dirname, '../templates/Views')
-const partialPath = path.join(__dirname, '../templates/Partials')
+const viewsDir = path.join(__dirname, '../templates/views')
+const partialPath = path.join(__dirname, '../templates/partials')
 
 // this is used for dynamic pages with ext hbs(handle bar for express)
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
-app.set('Views', viewsDir)
+app.set('views', viewsDir)
 hbs.registerPartials(partialPath)
 
 // this is used for static Directory to serve
@@ -68,30 +68,30 @@ app.get('/weather', (req, res) => {
 
 })
 app.get('/products', (req, res) => {
-        if (!req.query.search) {
-            return res.send({
-                error: 'You must provide a search term'
-            })
-        }
-        res.send({
-            products: []
+    if (!req.query.search) {
+        return res.send({
+            error: 'You must provide a search term'
         })
+    }
+    res.send({
+        products: []
     })
-    // app.get('/about/*', (req, res) => {
-    //     res.render('404', {
-    //         title: 'About page not found',
-    //         name: 'Bassem alameddine'
-    //     })
+})
+app.get('/about/*', (req, res) => {
+    res.render('404', {
+        title: 'About page not found',
+        name: 'Bassem alameddine'
+    })
 
-// })
+})
 
-// app.get('*', (req, res) => {
-//     res.render('404', {
-//         title: '404 page not found',
-//         name: 'Bassem alameddine'
-//     })
+app.get('*', (req, res) => {
+    res.render('404', {
+        title: '404 page not found',
+        name: 'Bassem alameddine'
+    })
 
-// })
+})
 
 app.listen(port, () => {
     console.log("server is up on port " + port)
