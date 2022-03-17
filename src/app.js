@@ -1,7 +1,6 @@
 const path = require("path")
 const express = require('express')
 const hbs = require('hbs');
-const { response } = require("express");
 
 const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
@@ -97,20 +96,3 @@ app.get('*', (req, res) => {
 app.listen(port, () => {
     console.log("server is up on port " + port)
 })
-
-// used for APIs
-// app.get('/help', (req, res) => {
-//     res.send({
-//         name:'Bassem',
-//         age:30
-//     });
-// })
-// app.get('/about', (req, res) => {
-//     res.send("<h1>About</h1>");
-// })
-// app.get('/weather', (req, res) => {
-//     res.send({
-//         forecast:"It's snowing",
-//         location:"Lebanon"
-//     });
-// })
