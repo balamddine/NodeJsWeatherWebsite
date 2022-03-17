@@ -7,7 +7,8 @@ const geocode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
 const app = express();
-// Define paths for Express config
+const port = process.env.PORT || 3000
+    // Define paths for Express config
 const publicDir = path.join(__dirname, '../public')
 const viewsDir = path.join(__dirname, '../templates/Views')
 const partialPath = path.join(__dirname, '../templates/partials')
@@ -45,29 +46,27 @@ app.get('/weather', (req, res) => {
         })
     }
 
-    geocode(address, (error, { place_name, longitude, latitude }={}) => {
+    geocode(address, (error, { place_name, longitude, latitude } = {}) => {
         if (error) {
             return res.send({ error });
-        }
-        else if (place_name && longitude && latitude) {
+        } else if (place_name && longitude && latitude) {
             forecast(place_name, longitude, latitude, (error, forcastData) => {
                 if (error) {
                     return res.send({ error });
-                }
-                else {
-                   console.log(forcastData)
-                    return res.send({ 
+                } else {
+                    console.log(forcastData)
+                    return res.send({
                         forecast: forcastData,
                         location: place_name,
                         address
-                     });
-                    
+                    });
+
                 }
             })
         }
     })
 
-    
+
 })
 app.get('/products', (req, res) => {
     if (!req.query.search) {
@@ -95,8 +94,8 @@ app.get('*', (req, res) => {
 
 })
 
-app.listen(3000, () => {
-    console.log("server is up on port 3000")
+app.listen(port, () => {
+    console.log("server is up on port " + port)
 })
 
 // used for APIs
@@ -115,4 +114,3 @@ app.listen(3000, () => {
 //         location:"Lebanon"
 //     });
 // })
-
