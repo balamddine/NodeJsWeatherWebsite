@@ -10,12 +10,12 @@ const port = process.env.PORT || 3000
     // Define paths for Express config
 const publicDir = path.join(__dirname, '../public')
 const viewsDir = path.join(__dirname, '../templates/Views')
-const partialPath = path.join(__dirname, '../templates/partials')
+const partialPath = path.join(__dirname, '../templates/Partials')
 
 // this is used for dynamic pages with ext hbs(handle bar for express)
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
-app.set('views', viewsDir)
+app.set('Views', viewsDir)
 hbs.registerPartials(partialPath)
 
 // this is used for static Directory to serve
